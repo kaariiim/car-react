@@ -60,18 +60,23 @@ const CarEdit = ({ car, refresh }: CarEditPropsType) => {
         isOpen={isOpened}
         toggle={() => setIsOpened(!isOpened)}
       >
-        <ModalHeader className="bg-warning" toggle={() => setIsOpened(false)}>
-          Edit Cars
+        <ModalHeader>
+          Edit Car
+          <button className="float-right btn btn-default" onClick={() => setIsOpened(!isOpened)}> X  </button> 
         </ModalHeader>
         <ModalBody>
           <Form inline>
-            <FormGroup floating>
-              <Input value={model} id="model" name="model" type="text" />
-              <Label for="model">
-                Cars
+            <div className="form-group">
+            <Label for="model">
+                Car
               </Label>
-            </FormGroup>
-            <FormGroup floating>
+              <Input value={model} id="model" name="model" type="text" className="form-group" />
+             
+              </div>
+            <div className="form-group">
+            <Label for="color">
+               Color 
+              </Label>
               <Input
                 value={color}
                 id="color"
@@ -80,22 +85,22 @@ const CarEdit = ({ car, refresh }: CarEditPropsType) => {
                 onChange={(e) => setColor(e.target.value)}
               >
               </Input>
-              <Label for="color">
-               Color s Car
+             
+              </div>
+           <div className="form-group">
+            <Label for="horsepower">
+               Horse Power 
               </Label>
-            </FormGroup>
-            <FormGroup floating>
               <Input
                 value={horsepower}
                 id="horsepower"
                 name="horsepower"
                 type="number"
+                
                 onChange={(e) => setHorsepower(Number.parseInt(e.target.value))}
               />
-              <Label for="horsepower">
-               Horse Power s Car
-              </Label>
-            </FormGroup>
+              
+              </div>
           </Form>
         </ModalBody>
         <ModalFooter>

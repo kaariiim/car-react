@@ -38,7 +38,7 @@ const CarDelete = ({ car, refresh }: CarDeletePropsType) => {
         Delete Car
         </ModalHeader>
         <ModalBody>
-        Delete Car sure {car.model}?
+        sure to Delete this Car  {car.model}?
         </ModalBody>
         <ModalFooter>
           <Button color="danger" onClick={submit}>
