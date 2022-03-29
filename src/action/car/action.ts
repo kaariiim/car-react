@@ -2,9 +2,11 @@
 import axios from "axios";
 import Car from "../../@types/car";
 
+const api_url ="http://localhost:3000/"; 
+
 export function getCars(callback: (data: Car[]) => void) {
   axios
-    .get("http://localhost:5000/car")
+    .get(api_url+"car")
     .then(({ data }) => {
       callback(data);
     })
@@ -15,7 +17,7 @@ export function getCars(callback: (data: Car[]) => void) {
 
 export function addCar(car: Car, callback: () => void) {
   axios
-    .post("http://localhost:5000/car", car)
+    .post(api_url+'car', car)
     .then(() => {
       callback();
     })
@@ -24,9 +26,9 @@ export function addCar(car: Car, callback: () => void) {
     });
 }
 
-export function editCars(car: Car, callback: () => void) {
+export function editCars(car: Car, carId:any, callback: () => void) {
   axios
-    .put(`http://localhost:5000/car/${car._id}`, car)
+    .put(api_url+"car/"+carId, car)
     .then(() => {
       callback();
     })
@@ -37,7 +39,7 @@ export function editCars(car: Car, callback: () => void) {
 
 export function deleteCars(car: Car, callback: () => void) {
   axios
-    .delete(`http://localhost:5000/car/${car._id}`)
+    .delete(api_url+"car/"+car._id)
     .then(() => {
       callback();
     })

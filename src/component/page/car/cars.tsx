@@ -16,60 +16,68 @@ const Cars = () => {
   }, []);
   return (
     <>
-      <div className="d-flex justify-content-between">
-    <h1>Cars</h1>
+      <div className="row mt-5">
+        <div className="col-md-6 text-left">
+          <h3>Cars</h3>
+        </div>
+        <div className="col-md-6 text-right">
         <CarAdd refresh={() => getCars(setCars)} />
+        </div> 
       </div>
-      <Table bordered hover responsive striped>
-        <thead>
-          <tr>
-            <th>
-              Model s Car
-            </th>
-            <th>
-             Color s Car
-            </th>
-            <th>
-            Horse Power s Car
-            </th>
-           
-            <th>
-             Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {cars.length ? (
-            cars.map((car, i) => (
-              <tr key={i}>
-                <td scope="row">{car.model}</td>
-                <td>{car.color}</td>
-                <td>{car.horsepower}</td>
-                <td>
-                  <ButtonGroup>
-                    <CarEdit
-                      car={car}
-                      refresh={() => getCars(setCars)}
-                    />
-                    <CarDelete
-                      car={car}
-                      refresh={() => getCars(setCars)}
-                    />
-                  </ButtonGroup>
-                </td>
+      <div className="row mt-4">
+        <div className="col-md-12">
+          <Table bordered hover responsive striped>
+            <thead>
+              <tr>
+                <th>
+                  Model s Car
+                </th>
+                <th>
+                Color s Car
+                </th>
+                <th>
+                Horse Power s Car
+                </th>
+              
+                <th>
+                Actions
+                </th>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan={5} className="text-center p-5">
-                <FontAwesomeIcon icon={faBoxOpen} size="4x" />
-                <br />
-                No cars yet
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </Table>
+            </thead>
+            <tbody>
+              {cars.length ? (
+                cars.map((car, i) => (
+                  <tr key={i}>
+                    <td scope="row">{car.model}</td>
+                    <td>{car.color}</td>
+                    <td>{car.horsepower}</td>
+                    <td>
+                      <ButtonGroup>
+                        <CarEdit
+                          car={car}
+                          refresh={() => getCars(setCars)}
+                        />
+                        <CarDelete
+                          car={car}
+                          refresh={() => getCars(setCars)}
+                        />
+                      </ButtonGroup>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={5} className="text-center p-5">
+                    <FontAwesomeIcon icon={faBoxOpen} size="4x" />
+                    <br />
+                    No cars yet
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
+        </div>
+      </div>
     </>
   );
 };

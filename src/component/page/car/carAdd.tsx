@@ -54,12 +54,14 @@ const CarAdd = (props: CarAddPropsType) => {
     <>
       <Button
         color="success"
-        size="lg"
+        size="xs"
         className="mb-2"
         onClick={() => setIsOpened(true)}
+        
       >
-        Added Cars {" "}
-        <FontAwesomeIcon icon={faAdd} />
+        <FontAwesomeIcon icon={faAdd} className="pr-2" />
+        Added Cars
+        
       </Button>
       <Modal
         centered
@@ -67,50 +69,49 @@ const CarAdd = (props: CarAddPropsType) => {
         isOpen={isOpened}
         toggle={() => setIsOpened(!isOpened)}
       >
-        <ModalHeader
-          className="bg-success text-white"
-          toggle={() => setIsOpened(!isOpened)}
-        >
-         Cars
+        <ModalHeader>
+          Cars model 
+          <button className="float-right btn btn-default" onClick={() => setIsOpened(!isOpened)}> X  </button>
         </ModalHeader>
         <ModalBody>
-          <Form inline>
-            <FormGroup floating>
-              <Input
-                value={model}
-                id="model"
-                name="model"
-                type="text"
-                onChange={(e) => setModel(e.target.value)}
-              />
-              <Label for="model">
-                Cars
-              </Label>
-            </FormGroup>
-            <FormGroup floating>
-              <Input
-                value={color}
-                id="color"
-                name="color"
-                type="text"
-                onChange={(e) => setColor(e.target.value)}
-               />
-              <Label for="color">
-                Car s Color
-              </Label>
-              </FormGroup>
-            <FormGroup floating>
-              <Input
-                value={horsepower}
-                id="horsepower"
-                name="horsepower"
-                type="number"
-                onChange={(e) => setHorsepower(Number.parseInt(e.target.value))}
-              />
-              <Label for="horsepower">
-               Horse Power s Car
-              </Label>
-              </FormGroup>
+          <Form >
+              <div className="form-group">
+                <Label for="model">
+                  Model
+                </Label>
+                <Input
+                  value={model}
+                  id="model"
+                  name="model"
+                  type="text"
+                  className="form-group"
+                  onChange={(e) => setModel(e.target.value)}
+                /> 
+              </div>
+              <div className="form-group">
+                <Label for="color">
+                  Color
+                </Label>
+                <Input
+                  value={color}
+                  id="color"
+                  name="color"
+                  type="text"
+                  onChange={(e) => setColor(e.target.value)}
+                /> 
+              </div>
+              <div className="form-group">
+                <Label for="horsepower">
+                  Horse Power
+                </Label>
+                <Input
+                  value={horsepower}
+                  id="horsepower"
+                  name="horsepower"
+                  type="number"
+                  onChange={(e) => setHorsepower(Number.parseInt(e.target.value))}
+                /> 
+              </div>
           </Form>
         </ModalBody>
         <ModalFooter>

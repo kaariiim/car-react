@@ -24,6 +24,7 @@ const CarEdit = ({ car, refresh }: CarEditPropsType) => {
   const [isOpened, setIsOpened] = useState<boolean>(false);
 
   // form states
+  const [carId, setCarId] = useState<any>(car._id);
   const [model, setModel] = useState<string>(car.model);
   const [color, setColor] = useState<string>(car.color);
   const [horsepower, setHorsepower] = useState<number>(car.horsepower);
@@ -36,10 +37,9 @@ const CarEdit = ({ car, refresh }: CarEditPropsType) => {
       horsepower,
     };
 
-    editCars(editCar, () => {
+    editCars(editCar, carId, () => {
       refresh();
-      setIsOpened(false);
-      reset();
+      setIsOpened(false); 
     });
   };
 
